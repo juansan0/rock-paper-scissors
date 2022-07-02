@@ -1,5 +1,6 @@
 # rock-paper-scissors
 Classic rock, paper and scissors game
+for now you can only plat it in the console
 
 # features
 -draw
