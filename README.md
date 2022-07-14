@@ -1,7 +1,7 @@
 # rock-paper-scissors
 Classic rock, paper and scissors game
 
-(See live)[https://juansan0.github.io/rock-paper-scissors/]
+[See live](https://juansan0.github.io/rock-paper-scissors/)
 
 # features
 - [x] draw instance
