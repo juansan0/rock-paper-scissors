@@ -1,14 +1,88 @@
+const rock = document.getElementById('rock');
+const papers = document.getElementById('papers');
+const scissors = document.getElementById('scissors');
+const txt = document.getElementById('txt');
+const playerDiv = document.getElementById('playerDiv');
+const computerDiv = document.getElementById('computerDiv');
+const playerScoreTxt = document.getElementById('playerScoreTxt');
+const computerScoreTxt = document.getElementById('computerScoreTxt');
+
+var playerSelection;
+var computerSelection;
+var rockIsClicked = false;
+var papersIsClicked = false;
+var scissorsIsClicked = false;
+var playerScore = 0;
+var computerScore = 0;
+var winner;
+
+rock.addEventListener("click", Selection);
+papers.addEventListener("click", Selection);
+scissors.addEventListener("click", Selection);
+
+if (rock.addEventListener) {
+    rock.addEventListener("click", function() {
+        rockIsClicked = true;
+        Selection();
+    }, rockIsClicked = false);
+}
+if (papers.addEventListener) {
+    papers.addEventListener("click", function() {
+        papersIsClicked = true;
+        Selection();
+    }, papersIsClicked = false);
+}
+if (scissors.addEventListener) {
+    scissors.addEventListener("click", function() {
+        scissorsIsClicked = true;
+        Selection();
+    }, scissorsIsClicked = false);
+}
+
+function Selection(){
+    if (rockIsClicked == true) {
+        rockIsClicked = false;
+        papersIsClicked = false;
+        scissorsIsClicked = false;
+        playerSelection = "rock";
+        playerDiv.innerHTML = ("✊  ");
+        computerPlay();
+        playRound(playerSelection, computerSelection);
+    }
+    else if (papersIsClicked == true) {
+        rockIsClicked = false;
+        papersIsClicked = false;
+        scissorsIsClicked = false;
+        playerSelection = "papers";
+        playerDiv.innerHTML = ("✋  ");
+        computerPlay();
+        playRound(playerSelection, computerSelection);
+    }
+    else if (scissorsIsClicked == true) {
+        rockIsClicked = false;
+        papersIsClicked = false;
+        scissorsIsClicked = false;
+        playerSelection = "scissors";
+        playerDiv.innerHTML = ("✌  ");
+        computerPlay();
+        playRound(playerSelection, computerSelection);
+    }
+}
+
 function computerPlay(){
     var rand = Math.floor(Math.random() * 3);
     switch (rand) {
         case 0:
-            return "rock"
-         break;
+            computerSelection = "rock";
+            computerDiv.innerHTML = ("✊");
+            break;
         case 1:
-            return "papers"
-           break;
+            computerSelection = "papers";
+            computerDiv.innerHTML = ("✋  ");
+            break;
         case 2:
-            return "scissors"
+            computerSelection = "scissors";
+            computerDiv.innerHTML = ("✌  ");
             break;
         default:
             break;
@@ -16,38 +90,74 @@ function computerPlay(){
 }
 
 function playRound(playerSelection, computerSelection){
-    switch (computerSelection) {
+    switch (playerSelection) {
         case "rock":
-            if (playerSelection == "rock") {
-                return "draw"
+            if (computerSelection == "rock") {
+                txt.innerHTML = ("Draw");
             }
-            else if (playerSelection == "papers") {
-                return "player wins"
+            else if (computerSelection == "papers") {
+                txt.innerHTML = ("You lost!");
+                computerScore++;
+                computerScoreTxt.innerHTML = ("Computer: "+computerScore);
+                if (computerScore == 5) {
+                    winner = "Computer";
+                    restartGame(winner);
+                }
             }
-            else if (playerSelection == "scissors") {
-                return "computer wins"
+            else if (computerSelection == "scissors") {
+                txt.innerHTML = ("You won!");
+                playerScore++;
+                playerScoreTxt.innerHTML = ("Player: "+playerScore);
+                if (playerScore == 5) {
+                    winner = "Player";
+                    restartGame(winner);
+                }
             }
             break;
         case "papers":
-            if (playerSelection == "papers") {
-                return "draw"
+            if (computerSelection == "rock") {
+                txt.innerHTML = ("You won!");
+                playerScore++;
+                playerScoreTxt.innerHTML = ("Player: "+playerScore);
+                if (playerScore == 5) {
+                    winner = "Player";
+                    restartGame(winner);
+                }
             }
-            else if (playerSelection == "scissors") {
-                return "player wins"
+            else if (computerSelection == "papers") {
+                txt.innerHTML = ("Draw");
             }
-            else if (playerSelection == "rock") {
-                return "computer wins"
+            else if (computerSelection == "scissors") {
+                txt.innerHTML = ("You lost!");
+                computerScore++;
+                computerScoreTxt.innerHTML = ("Computer: "+computerScore);
+                if (computerScore == 5) {
+                    winner = "Computer";
+                    restartGame(winner);
+                }
             }
             break;
         case "scissors":
-            if (playerSelection == "scissors") {
-                return "draw"
+            if (computerSelection == "rock") {
+                txt.innerHTML = ("You lost!");
+                computerScore++;
+                computerScoreTxt.innerHTML = ("Computer: "+computerScore);
+                if (computerScore == 5) {
+                    winner = "Computer";
+                    restartGame(winner);
+                }
             }
-            else if (playerSelection == "rock") {
-                return "player wins"
+            else if (computerSelection == "papers") {
+                txt.innerHTML = ("You won!");
+                playerScore++;
+                playerScoreTxt.innerHTML = ("Player: "+playerScore);
+                if (playerScore == 5) {
+                    winner = "Player";
+                    restartGame(winner);
+                }
             }
-            else if (playerSelection == "paper") {
-                return "computer wins"
+            else if (computerSelection == "scissors") {
+                txt.innerHTML = ("Draw");
             }
             break;
         default:
@@ -55,12 +165,15 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
+function restartGame(winner){
+    alert(winner + " won te game!\nThe game will restart")
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreTxt.innerHTML = ("Player: "+playerScore);
+    computerScoreTxt.innerHTML = ("Computer: "+computerScore);
+    playerDiv.innerHTML = ("❔");
+    computerDiv.innerHTML = ("❔");
+    txt.innerHTML = ("Choose rock, papers or scissors");
+
 
 }
-
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-
-console.log("player pick: " + playerSelection + " | " + "computer pick: " + computerSelection + " | " +
-playRound(playerSelection, computerSelection));

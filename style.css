@@ -1,0 +1,113 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn1{
+    width: 250px;
+    height: 250px;
+    margin: 0 15px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+.btn1:hover p{
+    font-size: 120px;
+}
+
+.btn1 p{
+    font-size: 100px;
+    margin: 0 auto;
+}
+
+.btn2{
+    width: 250px;
+    height: 250px;
+    margin: 0 15px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+.btn2:hover p{
+    font-size: 120px;
+}
+
+.btn2 p{
+    font-size: 100px;
+    margin: 0 auto;
+}
+
+.btn3{
+    width: 250px;
+    height: 250px;
+    margin: 0 15px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+.btn3:hover p{
+    font-size: 120px;
+}
+
+.btn3 p{
+    font-size: 100px;
+    margin: 0 auto;
+}
+
+div{
+    display: flex;
+}
+
+.ui{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.ui-score{
+    flex-direction: column;
+}
+
+@media(max-width: 700px){
+    section{
+        flex-direction: column;
+    }
+    .btn1{
+        width: 150px;
+        height: 150px;
+    }
+    .btn2{
+        width: 150px;
+        height: 150px;
+    }
+    .btn3{
+        width: 150px;
+        height: 150px;
+    }
+    .btn1 p{
+        font-size: 70px;
+        margin: 0 auto;
+    }
+    .btn2 p{
+        font-size: 70px;
+        margin: 0 auto;
+    }
+    .btn3 p{
+        font-size: 70px;
+        margin: 0 auto;
+    }
+    .btn1:hover p{
+        font-size: 80px;
+    }
+    .btn2:hover p{
+        font-size: 80px;
+    }
+    .btn3:hover p{
+        font-size: 80px;
+    }
+    .ui{
+        margin-bottom: 15px;
+    }
+}
