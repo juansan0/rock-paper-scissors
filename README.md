@@ -1,10 +1,12 @@
 # rock-paper-scissors
 Classic rock, paper and scissors game
-for now you can only plat it in the console
+
+(See live)[https://juansan0.github.io/rock-paper-scissors/]
 
 # features
 - [x] draw instance
 - [x] computer win
 - [x] player win
-- [ ] 5 round game
-- [ ] html button interactivity
+- [x] 5 round game
+- [x] html button interactivity
+- [x] responsive
